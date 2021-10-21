@@ -1,0 +1,4 @@
+npm init --Tạo ra projects
+npm install express -- Cài đặt express server
+node <file chạy> -- chạy chương trình
+npm install nodemon --save-dev chạy chương trình ko cần restart lại
