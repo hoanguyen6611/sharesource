@@ -9,6 +9,16 @@ class CourseController {
             })
             .catch(next);
     }
+    //[GET]/course/create
+    create(req, res, next) {
+        res.render('courses/create');
+    }
+    //[GET]/course/store
+    store(req, res, next) {
+        const course = new Course(req.body);
+        course.save();
+        res.send('COURSE SAVED!!');
+    }
 }
 //Public ra ngoài
 module.exports = new CourseController();
