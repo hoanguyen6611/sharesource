@@ -1,11 +1,11 @@
 const Course = require('../models/Course');
-const {mongooseToObject} = require('../../util/mongoose');
+const { mongooseToObject } = require('../../util/mongoose');
 class CourseController {
     //[GET]/course/:slug
     show(req, res, next) {
-        Course.findOne({slug: req.params.slug})
-            .then(course =>{
-                res.render('courses/show',{course: mongooseToObject(course)});
+        Course.findOne({ slug: req.params.slug })
+            .then(course => {
+                res.render('courses/show', { course: mongooseToObject(course) });
             })
             .catch(next);
     }
@@ -15,9 +15,14 @@ class CourseController {
     }
     //[GET]/course/store
     store(req, res, next) {
-        const course = new Course(req.body);
-        course.save();
-        res.send('COURSE SAVED!!');
+        const formData = req.body;
+        formData.image = `https://img.youtube.com/vi/${req.body.videoId}/maxresdefault.jpg`
+        const course = new Course(formData);
+        course.save()
+            .then(() => res.redirect('/'))
+            .catch(error=>{
+                
+            })
     }
 }
 //Public ra ngoài
