@@ -1,7 +1,7 @@
 {
-  "name": "blog",
+  "name": "project_cntt",
   "version": "1.0.0",
-  "description": "",
+  "description": "no",
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
