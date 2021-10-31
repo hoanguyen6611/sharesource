@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hoanguyen6611/nodejs_project.git"
+    "url": "git+https://github.com/hoanguyen6611/projectcntt_nodejs.git"
   },
   "keywords": [
     "nodejs_blog"
@@ -19,9 +19,9 @@
   "author": "hoà",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hoanguyen6611/nodejs_project/issues"
+    "url": "+https://github.com/hoanguyen6611/projectcntt_nodejs/issues"
   },
-  "homepage": "https://github.com/hoanguyen6611/nodejs_project#readme",
+  "homepage": "+https://github.com/hoanguyen6611/projectcntt_nodejs#readme",
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --tab-width 4 --write"
   },
