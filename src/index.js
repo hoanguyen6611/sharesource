@@ -6,6 +6,7 @@ const app = express();
 const port = 3000;
 const route = require('./routes');
 const db = require('./config/db');
+const methodOverride = require('method-override');
 //Connect to DB server
 db.connect();
 
@@ -18,12 +19,16 @@ app.use(
         extended: true,
     }),
 );
+app.use(methodOverride('_method'));
 app.use(express.json());
 // Handlers template engine
                   app.engine(
                       'hbs',
                       handlebars({
                           extname: '.hbs',
+                          helpers: {
+                              sum:(a,b) => a+b,
+                        }
                       }),
                   );
 app.set('view engine', 'hbs');
