@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const jquery = require('jquery');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const app = express();

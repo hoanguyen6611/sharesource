@@ -55,6 +55,35 @@ class CourseController {
             .then(() => res.redirect('back'))
             .catch(next);
     }
+    //[POST]/course/handle-form
+    handleForm(req, res, next) {
+        switch (req.body.action) {
+            case 'delete':
+                Course.delete({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.json('Không có hành vi');
+        }
+    }
+    //[POST]/course/trash-all
+    trashAll(req, res, next) {
+        switch (req.body.action) {
+            case 'deleteForce':
+                Course.deleteOne({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            case 'restoreAll':
+                Course.restore({ _id: { $in: req.body.courseIds } })
+                    .then(() => res.redirect('back'))
+                    .catch(next);
+                break;
+            default:
+                res.json('Không có hành vi');
+        }
+    }
 }
 //Public ra ngoài
 module.exports = new CourseController();
