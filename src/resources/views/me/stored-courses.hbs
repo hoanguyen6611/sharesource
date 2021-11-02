@@ -13,14 +13,17 @@
                 <option value="">--Hành động--</option>
                 <option value="delete">Xoá</option>
             </select>
-            <button class="btn btn-primary btn-sm btn-all-submit disabled">Thực hiện</button>
+            <button class="btn btn-primary btn-sm btn-all-submit " disabled>Thực hiện</button>
         </div>
     </div>
     <table class="table mt-4">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col">Tên khoá học</th>
+                <th scope="col" colspan="2"></th>
+                <th scope="col">
+                    Tên khoá học
+                    <a href="?_sort&column=name&type=desc"><i class="fas fa-chevron-up"></i></a>
+                </th>
                 <th scope="col">Trình độ</th>
                 <th scope="col">Thời gian tạo</th>
             </tr>
@@ -83,11 +86,13 @@
     var deleteCourse = document.getElementById('delete-course-modal')
     var idCourse;
     var deleteForm = document.forms['delete-course-form'];
-    var containerForm = document.forms['container-form'];
+    //var containerForm = document.forms['container-form'];
+    var containerForm = $('form[name="container-form"]');
     var btnDeleteCourse = document.getElementById('btn-delete-course');
     var btnAllChecked = $('#checkbox-all');
     var btnItemChecked = $('input[name="courseIds[]"]');
     var btnCheckAllSubmit = $('.btn-all-submit');
+    //console.log(containerForm);
     deleteCourse.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget;
         idCourse = button.getAttribute('data-bs-id');
@@ -108,20 +113,13 @@
         btnAllChecked.prop('checked', isCheckedAll);
         renderCheckAllSubmitBtn();
     })
-    //Chọn phương thức thực hiện
-    btnCheckAllSubmit.on('submit', function (e) {
-        var isSubmitable = !$(this).hasClass('disabled');
-        if (!isSubmitable) {
-            e.preventDefault();
-        }
-    })
     //Enable nút thực hiện
     function renderCheckAllSubmitBtn() {
         var CheckedCount = $('input[name="courseIds[]"]:checked').length;
         if (CheckedCount > 0) {
-            btnCheckAllSubmit.removeClass('disabled');
+            btnCheckAllSubmit.attr('disabled',false);
         }else{
-            btnCheckAllSubmit.addClass('disabled');
+            btnCheckAllSubmit.attr('disabled',true);
         }
     }
     //console.log(containerForm);

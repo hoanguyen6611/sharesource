@@ -8,6 +8,7 @@ const port = 3000;
 const route = require('./routes');
 const db = require('./config/db');
 const methodOverride = require('method-override');
+const SortMiddleware = require('./app/middlewares/SortMiddleware');
 //Connect to DB server
 db.connect();
 
@@ -32,6 +33,7 @@ app.use(express.json());
                         }
                       }),
                   );
+app.use(SortMiddleware);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources','views'));
 // route init
