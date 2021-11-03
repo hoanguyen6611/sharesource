@@ -33,7 +33,7 @@ app.use(express.json());
                         }
                       }),
                   );
-app.use(SortMiddleware);
+// app.use(SortMiddleware);
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources','views'));
 // route init

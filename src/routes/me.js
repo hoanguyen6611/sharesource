@@ -3,6 +3,7 @@ const router = express.Router();
 const meController = require('../app/controllers/MeController');
 router.get('/stored/courses', meController.storedCourses);
 router.get('/stored/news', meController.writeNews);
+router.get('/stored/docs', meController.storedDocs);
 router.get('/stored/mess', meController.writeMess);
 router.get('/trash/courses', meController.trashCourses);
 router.get('/sign-in', meController.signIn);

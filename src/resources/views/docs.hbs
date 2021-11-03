@@ -1,17 +1,16 @@
- {{>slider}}
 <div class="mt-4 mb-4">
     <div class="row">
-        {{#each courses}}
+        {{#each docs}}
         <div class="col-sm-6 col-lg-4">
             <div class="card card-course-item">
-                <a href="/courses/{{this.slug}}">
-                    <img src="{{this.image}}" class="card-img-top img-size" alt="{{this.name}}">
+                <a href="/docs/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top img-card" alt="{{this.name}}">
                 </a>
                 <div class="card-body">
-                    <a href="/courses/{{this.slug}}">
+                    <a href="/docs/{{this.slug}}">
                         <h5 class="card-title">{{this.name}}</h5>
                     </a>
-                    <a href="/courses/{{this.slug}}" class="btn btn-primary">Học ngay</a>
+                    <a href="/docs/{{this.slug}}" class="btn btn-primary">Xem ngay</a>
                 </div>
             </div>
         </div>

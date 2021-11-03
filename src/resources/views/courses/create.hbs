@@ -3,15 +3,15 @@
     <form method="post" action="/courses/store">
         <div class="mb-3">
             <label for="name" class="form-label">Tên bài học</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" required>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Mô tả</label>
-            <textarea class="form-control" id="description" name="description"></textarea>
+            <textarea class="form-control" id="description" name="description" required></textarea>
         </div>
         <div class="mb-3">
             <label for="videoId" class="form-label">ID video</label>
-            <input type="text" class="form-control" id="videoId" name="videoId">
+            <input type="text" class="form-control" id="videoId" name="videoId" required>
         </div>
         <div class="mb-3">
             <label for="level" class="form-label">Mức độ </label>

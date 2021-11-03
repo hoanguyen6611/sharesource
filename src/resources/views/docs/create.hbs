@@ -1,0 +1,27 @@
+<div class="mt-4">
+    <h3 class="text-center">Đăng tài liệu</h3>
+    <form method="post" action="/docs/store">
+        <div class="mb-3">
+            <label for="name" class="form-label">Tên tài liệu</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Mô tả</label>
+            <textarea class="form-control" id="description" name="description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Tác giả</label>
+            <input class="form-control" id="author" name="author" required>
+        </div>
+        <div class="mb-3">
+            <label for="source" class="form-label">Nguồn</label>
+            <input class="form-control" id="source" name="source" required>
+        </div>
+        <div class="mb-3">
+            <label for="file" class="form-label">Link file</label>
+            <input type="text" class="form-control" id="file" name="file" required placeholder="Link file bằng Google Drive">
+        </div>
+        <button type="submit" class="btn btn-primary">Ảnh đại diện</button>
+        <button type="submit" class="btn btn-primary">Thêm tài liệu</button>
+    </form>
+</div>
