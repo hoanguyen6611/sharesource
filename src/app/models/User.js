@@ -1,22 +1,15 @@
 const mongoose = require('mongoose');
-const slug = require('mongoose-slug-generator');
-const mongooseDelete = require('mongoose-delete');
 const Schema = mongoose.Schema;
-const Course = new Schema({
-  name: { type: String, required: true },
-  description: { type: String, required: true },
-  image: { type: String },
-  slug: { type: String,slug: 'name',unique:true },
-  videoId: { type: String, required: true },
-  level: { type: String },
-}, {
-  timestamps: true, //mặc định thêm thời gian tạo và thời gian update
+var bcrypt = require('bcrypt');
+const User = new Schema({
+  email: { type: String, required: true },
+  password: { type: String, required: true },
 });
-// Add plugin
-mongoose.plugin(slug);
-Course.plugin(mongooseDelete,{ 
-    deletedAt : true,
-    overrideMethods: 'all',
-});
-module.exports = mongoose.model('Course', Course);
+// User.methods.encryptPassword= function(password){
+//   return bcrypt.hashSync(password, bcrypt.genSaltSync(5),null);
+// };
+// User.methods.validPassword = function(password){
+//   return bcrypt.compareSync(password, this.password);
+// };
+module.exports = mongoose.model('User', User);
 
