@@ -7,7 +7,7 @@ class CourseController {
     showAll(req, res,next){
         Course.find({})
             .then(courses => {
-                res.render('courses', { 
+                res.render('courses/courses', { 
                     courses: mutipleMongooseToObject(courses)
                 });
             })

@@ -6,7 +6,7 @@ class DocController {
     index(req, res, next) {
         Doc.find({})
         .then(docs => {
-            res.render('docs', { 
+            res.render('docs/docs', { 
                 docs: mutipleMongooseToObject(docs)
             });
         })
