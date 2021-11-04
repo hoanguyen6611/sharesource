@@ -12,4 +12,5 @@ router.delete('/:id', courseController.destroy);
 router.delete('/:id/force', courseController.forceDestroy);
 router.get('/', courseController.showAll);
 router.get('/:slug', courseController.showItems);
+router.get('/:slug/learn', courseController.learn);
 module.exports = router;

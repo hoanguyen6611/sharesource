@@ -15,7 +15,7 @@ class SiteController {
     }
     //[GET]/search
     search(req, res) {
-        res.render('search');
+        var q = req.query.q;
     }
 }
 //Public ra ngoài

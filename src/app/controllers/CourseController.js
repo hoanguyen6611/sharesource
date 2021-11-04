@@ -96,6 +96,10 @@ class CourseController {
                 res.json('Không có hành vi');
         }
     }
+    //[GET]/course/:slug/learn
+    learn(req, res, next) {
+        res.render('courses/learn');
+    }
 }
 //Public ra ngoài
 module.exports = new CourseController();
