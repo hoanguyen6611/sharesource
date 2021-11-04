@@ -15,8 +15,8 @@ class DocController {
     //[GET]/docs/:slug
     showItems(req, res, next) {
         Doc.findOne({ slug: req.params.slug })
-            .then(course => {
-                res.render('docs/show', { doc: mongooseToObject(course) });
+            .then(doc => {
+                res.render('docs/show', { doc: mongooseToObject(doc) });
             })
             .catch(next);
     }
@@ -33,6 +33,20 @@ class DocController {
             .catch(error => {
 
             })
+    }
+    //[GET]/docs/:id/edit
+    edit(req, res, next) {
+        Doc.findById(req.params.id)
+            .then(doc => res.render('docs/edit', {
+                doc: mongooseToObject(doc)
+            }))
+            .catch(next);
+    }
+    //[PUT]/course/:id
+    update(req, res, next) {
+        Doc.updateOne({ _id: req.params.id }, req.body)
+            .then(() => res.redirect('/me/stored/docs'))
+            .catch(next);
     }
     
 }

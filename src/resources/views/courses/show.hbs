@@ -2,11 +2,31 @@
     <div class="row">
         <div class="col-lg-9">
             <h2 class="title">{{course.name}}</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{course.videoId}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <img src="{{course.image}}" class="card-img-top img-size" alt="{{course.name}}">
             <p class="descripton">{{course.description}}</p>
+            <h5 class="text-center">Thực hành</h5>
+            {{!-- <iframe height="100%" style="width: 100%;" scrolling="no" title="Untitled"
+                src="https://codepen.io/hoanguyen6611/embed/xxLpYRm?default-tab=html%2Cresult" frameborder="no"
+                loading="lazy" allowtransparency="true" allowfullscreen="true">
+                See the Pen <a href="https://codepen.io/hoanguyen6611/pen/xxLpYRm">
+                    Untitled</a> by Nguyễn Huy Hoà (<a href="https://codepen.io/hoanguyen6611">@hoanguyen6611</a>)
+                on <a href="https://codepen.io">CodePen</a>.
+            </iframe> --}}
         </div>
         <div class="col-lg-3">
-            <div class="btn btn-success"> Danh sách các bài học </div>
+            <iframe width="374" height="210" src="https://www.youtube.com/embed/{{course.videoId}}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            <button class="btn btn-success" href="#">Bắt đầu học</button>
+            <div class="mt-4">
+                <ul class="information">
+                    <li><i class="fas fa-level-up-alt mr-2"></i>{{course.level}}</li>
+                    <li><i class="fas fa-sort-numeric-up-alt mr-2"></i>Tổng số ... bài học</li>
+                    <li><i class="fas fa-clock mr-2"></i>Thời lượng</li>
+                    <li><i class="fas fa-sticky-note mr-2"></i>Học mọi lúc mọi nơi</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

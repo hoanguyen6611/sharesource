@@ -6,6 +6,7 @@ router.get('/stored/news', meController.writeNews);
 router.get('/stored/docs', meController.storedDocs);
 router.get('/stored/mess', meController.writeMess);
 router.get('/trash/courses', meController.trashCourses);
+router.get('/trash/docs', meController.trashDocs);
 router.get('/sign-in', meController.signIn);
 router.get('/sign-up', meController.signUp);
 module.exports = router;

@@ -43,7 +43,7 @@
                 <td>{{this.description}}</td>
                 <td>{{this.author}}</td>
                 <td>
-                    <a href="/courses/{{this._id}}/edit" class="btn btn-success" title="Cập nhập"><i
+                    <a href="/docs/{{this._id}}/edit" class="btn btn-success" title="Cập nhập"><i
                             class="far fa-edit"></i></a>
                     <a href="" class="btn btn-danger" data-toggle="modal" data-target="#delete-course-modal"
                         data-id="{{this._id}}" title="Xoá"><i class="fas fa-trash-alt"></i></a>
@@ -60,7 +60,7 @@
         </tbody>
     </table>
     <form>
-        <a href="/me/trash/courses" class="btn" title="Khôi phục"><i class="fas fa-trash-restore fa-2x"></i>
+        <a href="/me/trash/docs" class="btn" title="Khôi phục"><i class="fas fa-trash-restore fa-2x"></i>
             ({{deletedCount}})</a>
     </form>
     {{!-- Confirm delete course --}}

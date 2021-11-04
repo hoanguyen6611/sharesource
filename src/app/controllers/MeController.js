@@ -21,6 +21,12 @@ class MeController {
             .then(courses => res.render('me/trash-courses', { courses: mutipleMongooseToObject(courses) }))
             .catch(next);
     }
+    //[GET]/me/trash/docs
+    trashDocs(req, res, next) {
+        Doc.findDeleted({})
+            .then(docs => res.render('docs/trash-docs', { docs: mutipleMongooseToObject(docs) }))
+            .catch(next);
+    }
     //[GET]/me/sign-in
     signIn(req, res, next) {
         res.render('me/sign-in');
