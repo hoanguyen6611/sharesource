@@ -27,7 +27,7 @@ class CourseController {
     }
     //[GET]/course/store
     store(req, res, next) {
-        req.body.image = `https://img.youtube.com/vi/${req.body.videoId}/maxresdefault.jpg`
+        req.body.image = `https://img.youtube.com/vi/${req.body.linkImg}/maxresdefault.jpg`
         const course = new Course(req.body);
         course.save()
             .then(() => res.redirect('/me/stored/courses'))

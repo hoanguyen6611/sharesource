@@ -1,10 +1,19 @@
 <div class="mt-4">
     <div class="row">
-        <div class="col-lg-12">
-            <h2 class="title text-center">{{doc.name}}</h2>
-            <iframe src="https://drive.google.com/file/d/{{doc.file}}/preview" width="1110" height="960" allow="autoplay"></iframe>
-            <h5>Tác giả: {{doc.author}}</h5>
-            <p class="descripton">{{doc.description}}</p>
+        <div class="col-lg-10">
+            <h2 class="title text-center mb-4">{{doc.name}}</h2>
+            <iframe src="https://drive.google.com/file/d/{{doc.file}}/preview" width="940" height="1080" allow="autoplay"></iframe>
+            <h5 class="mt-4">Tác giả: {{doc.author}}</h5>
+            <p class="descripton mt-4">{{doc.description}}</p>
+        </div>
+        <div class="col-lg-2">
+            <h5 class="text-center">Đề thi liên quan</h5>
+            <ul>
+                <li><a href="">Đề thi số 1</a></li>
+                <li><a href="">Đề thi số 2</a></li>
+                <li><a href="">Đề thi số 3</a></li>
+                <li><a href="">Đề thi số 4</a></li>
+            </ul>
         </div>
     </div>
 </div>

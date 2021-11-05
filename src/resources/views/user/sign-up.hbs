@@ -1,23 +1,19 @@
 <div class="container">
   <h2 class="text-center">Đăng ký</h2>
-  <form class="mt-4">
-    {{!-- <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Tên</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    </div> --}}
+  <form class="mt-4" method="post" action="">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <label for="name" class="form-label">Họ và tên</label>
+      <input type="name" class="form-control" id="name" aria-describedby="nameHelp" name="name">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
     </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Ghi nhớ</label>
+    <div class="mb-3">
+      <label for="password" class="form-label">Mật khẩu</label>
+      <input type="password" class="form-control" id="password" name="password">
     </div>
     <button type="submit" class="btn btn-primary">Đăng ký</button>
-    <a href="/users/sign-in" class="btn">Đăng nhập</a>
+    {{!-- <a href="/users/sign-in" class="btn">Đăng nhập</a> --}}
   </form>
 </div>

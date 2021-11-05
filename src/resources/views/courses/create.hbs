@@ -10,8 +10,8 @@
             <textarea class="form-control" id="description" name="description" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="videoId" class="form-label">ID video</label>
-            <input type="text" class="form-control" id="videoId" name="videoId" required>
+            <label for="linkImg" class="form-label">Liên kết ảnh</label>
+            <input type="text" class="form-control" id="linkImg" name="linkImg" required>
         </div>
         <div class="mb-3">
             <label for="level" class="form-label">Mức độ </label>
@@ -23,6 +23,10 @@
                 <option value="l2">Trung bình</option>
                 <option value="l3">Nâng cao</option>
             </select> --}}
+        </div>
+        <div class="mb-3">
+            <label for="playlist" class="form-label">Link học</label>
+            <input type="text" class="form-control" value="{{course.playlist}}" id="playlist" name="playlist">
         </div>
         <button type="submit" class="btn btn-primary">Ảnh đại diện</button>
         <button type="submit" class="btn btn-primary">Thêm khoá học</button>

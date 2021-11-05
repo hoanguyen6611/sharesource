@@ -1,19 +1,23 @@
 <div class="container">
   <h2 class="text-center">Đăng nhập</h2>
-  <form class="mt-4">
+  <form class="mt-4" method="post" action="/users/sign-in">
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <label for="password" class="form-label">Mật khẩu</label>
+      <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Ghi nhớ</label>
     </div>
-    <button type="submit" class="btn btn-primary">Đăng Nhập</button>
-    <a href="/users/sign-up" class="btn">Đăng ký</a>
+    <div>
+      <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+    </div>
+    <div>
+      <a href="/users/sign-up" class="btn">Tạo tài khoản mới</a>
+    </div>
   </form>
 </div>

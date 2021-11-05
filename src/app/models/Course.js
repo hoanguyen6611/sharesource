@@ -7,8 +7,9 @@ const Course = new Schema({
   description: { type: String, required: true },
   image: { type: String },
   slug: { type: String,slug: 'name',unique:true },
-  videoId: { type: String, required: true },
+  linkImg: { type: String, required: true },
   level: { type: String },
+  playlist: { type: String },
 }, {
   timestamps: true, //mặc định thêm thời gian tạo và thời gian update
 });

@@ -18,16 +18,16 @@
             <input class="form-control" id="source" name="source" required>
         </div>
         <div class="mb-3">
-            <label for="file" class="form-label">Link file</label>
+            <label for="file" class="form-label">Liên kết tài liệu</label>
             <input type="text" class="form-control" id="file" name="file" required
-                placeholder="Link file bằng Google Drive">
-        </div>
-        <div class="mb-3">
-            <label for="file" class="form-label">Chọn ảnh đại diện</label>
-            <form action="/profile" method="post" enctype="multipart/form-data">
-                <input type="file" name="avatar" />
-            </form>
+                placeholder="Link file bằng Google Drive dưới dạng xem">
         </div>
         <button type="submit" class="btn btn-primary">Thêm tài liệu</button>
     </form>
+    <div class="mt-4">
+        <form action="/upload" enctype="multipart/form-data" method="post">
+            <input type="file" name="upload" multiple="multiple" />
+            <input class="btn btn-primary"type="submit" value="Upload" />
+        </form>
+    </div>
 </div>

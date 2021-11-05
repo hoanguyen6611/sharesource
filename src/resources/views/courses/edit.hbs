@@ -10,12 +10,16 @@
             <textarea class="form-control" id="description" name="description">{{course.description}}</textarea>
         </div>
         <div class="mb-3">
-            <label for="videoId" class="form-label">ID video</label>
-            <input type="text" class="form-control" value="{{course.videoId}}" id="videoId" name="videoId">
+            <label for="linkImg" class="form-label">Liên kết ảnh</label>
+            <input type="text" class="form-control" value="{{course.linkImg}}" id="linkImg" name="linkImg">
         </div>
         <div class="mb-3">
             <label for="level" class="form-label">Mức độ </label>
             <input type="text" class="form-control" value="{{course.level}}" id="level" name="level">
+        </div>
+        <div class="mb-3">
+            <label for="playlist" class="form-label">Link học</label>
+            <input type="text" class="form-control" value="{{course.playlist}}" id="playlist" name="playlist">
         </div>
         <button type="submit" class="btn btn-primary">Cập nhập</button>
     </form>
