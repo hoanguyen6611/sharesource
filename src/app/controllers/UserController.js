@@ -19,11 +19,13 @@ class UserController {
     }
     //[POST]/users/sign-up
     register(req, res, next) {
-        const password = bcrypt.hashSync(req.body.password, 8);
+        const salt = process.env.saltRounds;
+        const password = bcrypt.hashSync(req.body.password, salt);
         const entity = {
             name: req.body.name,
             email: req.body.email,
-            password
+            password,
+            admin:0
         };
         const user = new User(entity);
         user.save()
