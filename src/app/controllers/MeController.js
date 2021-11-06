@@ -57,6 +57,7 @@ class MeController {
             .catch(next);
     }
     
+    
 }
 //Public ra ngoài
 module.exports = new MeController();

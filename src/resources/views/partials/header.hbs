@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
+  <div class="container-fluid">
     <a class="navbar-brand" href="/">Chia sẻ tài nguyên lập trình</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -16,12 +16,6 @@
         <li class="nav-item">
           <a class="nav-link" href="/posts"><i class="fas fa-user-edit mr-2"></i>Bài viết chia sẻ</a>
         </li>
-        <li class="nav-item">
-          <a href="/users/sign-in" class="nav-link">Đăng nhập</a>
-        </li>
-        <li class="nav-item">
-          <a href="/users/sign-up" class="nav-link">Đăng ký</a>
-        </li>
       </ul>
     </div>
     <form action="/search" method="get">
@@ -32,6 +26,20 @@
         </div>
       </div>
     </form>
+    {{#if user}}
+    <div></div>
+    {{else}}
+    <div class="ml-4">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a href="/users/sign-in" class="nav-link">Đăng nhập</a>
+        </li>
+        <li class="nav-item">
+          <a href="/users/sign-up" class="nav-link">Đăng ký</a>
+        </li>
+      </ul>
+    </div>
+    {{/if}}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
@@ -39,9 +47,16 @@
             aria-haspopup="true" aria-expanded="false">
             <img src="https://avatar-redirect.appspot.com/google/109023826614717592641?size=400" alt=""
               class="user-avatar">
-            Hoà Nguyễn
+            {{#if user}}
+            {{user.name}}
+            {{else}}
+            Xin chào bạn
+            {{/if}}
           </a>
+          {{#if user.name}}
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/users/profile">Thông tin tài khoản</a>
+            <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="/me/stored/courses">Khóa học của tôi</a>
             <a class="dropdown-item" href="/me/stored/docs">Tài liệu của tôi</a>
             <a class="dropdown-item" href="/me/stored/news">Bài viết của tôi</a>
@@ -49,6 +64,11 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Đăng xuất</a>
           </div>
+          {{else}}
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/users/sign-in">Đăng nhập</a>
+          </div>
+          {{/if}}
         </li>
       </ul>
     </div>

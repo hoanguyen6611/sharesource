@@ -1,4 +1,3 @@
 node_modules/
 src/public/css
 src/app/upload/
-.env

@@ -8,10 +8,10 @@ const port = 3000;
 const route = require('./routes');
 const db = require('./config/db');
 const methodOverride = require('method-override');
+const session = require('express-session');
 // const SortMiddleware = require('./app/middlewares/SortMiddleware');
 // const bodyParser = require('body-parser');
 // const passport = require('passport');
-// const session = require('express-session');
 // const flash = require('connect-flash');
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(session({
@@ -34,8 +34,26 @@ app.use(
         extended: true,
     }),
 );
+app.use(async function(req, res, next) {
+    // if (req.session.isAuthenticated===null) {
+    //     req.session.isAuthenticated=false;
+    // }
+    // res.locals.lcIsAuthenticated=req.session.isAuthenticated;
+    // res.locals.lcAuthUser= req.session.authUser;
+    // next();
+    // console.log(req.session.isAuthenticated);
+})
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+    //   secure: true 
+    }
+}))
 // Handlers template engine
 app.engine(
     'hbs',
