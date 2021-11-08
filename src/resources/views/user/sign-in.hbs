@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid main-slider">
   <h2 class="text-center">Đăng nhập</h2>
   {{#if error}}
   <div class=" alert alert-warning alert-dismissible fade show" role="alert">
@@ -8,24 +8,28 @@
     {{error}}
   </div>
   {{/if}}
-  <form class="mt-4" method="post" action="">
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" name="email" autocomplete="off" required>
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Mật khẩu</label>
-      <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Ghi nhớ</label>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-primary">Đăng Nhập</button>
-    </div>
-    <div>
-      <a href="/users/sign-up" class="btn">Tạo tài khoản mới</a>
-    </div>
-  </form>
+  <div class="form-signin">
+    <divn class="form-signin-item">
+      <form class="mt-4" method="post" action="">
+        <div class="mb-3">
+          {{!-- <label for="email" class="form-label">Email</label> --}}
+          <input type="email" class="form-control" id="email" name="email" autocomplete="off" required placeholder="Email">
+        </div>
+        <div class="mb-3">
+          {{!-- <label for="password" class="form-label">Mật khẩu</label> --}}
+          <input type="password" class="form-control" id="password" name="password" autocomplete="off" required placeholder="Mật khẩu">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Ghi nhớ</label>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+        </div>
+        <div>
+          <a href="/users/sign-up" class="btn">Tạo tài khoản mới</a>
+        </div>
+      </form>
+    </divn>
+  </div>
 </div>

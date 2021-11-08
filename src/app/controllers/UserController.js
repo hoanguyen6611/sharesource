@@ -13,9 +13,9 @@ class UserController {
     signUp(req, res, next) {
         res.render('user/sign-up');
     }
-    //[POST]/users/sign-in
-    logIn(req, res, next) {
-
+    //[GET]/users/changepass
+    changePasswords(req, res, next) {
+        res.render('user/changepassword');
     }
     // Đăng ký
     //[POST]/users/sign-up
@@ -70,10 +70,10 @@ class UserController {
         })
             .then(user => {
                 if (user) {
-                    delete user.password;
-                    req.session.isAuthenticated = true;
-                    req.session.authUser = user;
-                    console.log(req.session.authUser);
+                    // delete user.password;
+                    // req.session.isAuthenticated = true;
+                    // req.session.authUser = user;
+                    // console.log(req.session.authUser);
                     res.render('user/profile',{
                         user: mongooseToObject(user)
                     });
@@ -90,10 +90,10 @@ class UserController {
     //[GET]/me/profile
     profile(req, res, next) {
         // kiểm tra quyền (thêm)
-        if (!req.session.isAuthenticated){
-            return res.redirect('/users/sign-in');
-        }
-        console.log(req.session.authUser)
+        // if (!req.session.isAuthenticated){
+        //     return res.redirect('/users/sign-in');
+        // }
+        // console.log(req.session.authUser)
         res.render('user/profile');
     }
 }

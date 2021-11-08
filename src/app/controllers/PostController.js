@@ -1,4 +1,4 @@
-class NewsController {
+class PostController {
     //[GET]/posts
     index(req, res) {
         res.render('posts/news');
@@ -21,4 +21,4 @@ class NewsController {
     }
 }
 //Public ra ngoài
-module.exports = new NewsController();
+module.exports = new PostController();

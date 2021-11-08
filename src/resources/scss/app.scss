@@ -26,10 +26,33 @@
   margin-left: 100px;
   margin-right: 100px;
 }
+
 .img-card {
   height: 450px;
 }
 .img-slider {
   height: 480px;
   width: 100%;
+}
+.form-signin {
+  display: flex;
+}
+.form-signin-item {
+  margin: auto;
+  border-bottom: 1px solid #ccc;
+  background-color: #ccc;
+  padding: 100px;
+  border-radius: 25px;
+}
+.main-slider {
+  background: url("https://cdn.pixabay.com/photo/2018/01/30/22/50/forest-3119826_960_720.jpg")
+    top center / cover no-repeat;
+  padding-top: 50px;
+  padding-bottom: 45px;
+}
+.text-account {
+  display: inline-block;
+}
+.account-login a {
+  color: #212529;
 }

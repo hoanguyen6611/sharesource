@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid main-slider">
   <h2 class="text-center">Đăng ký</h2>
   {{#if error}}
   <div class=" alert alert-warning alert-dismissible fade show" role="alert">
@@ -8,20 +8,37 @@
     {{error}}
   </div>
   {{/if}}
-  <form class="mt-4" method="post" action="">
-    <div class="mb-3">
-      <label for="name" class="form-label">Họ và tên</label>
-      <input type="name" class="form-control" id="name" aria-describedby="nameHelp" name="name" autocomplete="off">
+  <div class="form-signin">
+    <div class="form-signin-item">
+      <form class="mt-4" method="post" action="">
+        <div class="mb-3">
+          {{!-- <label for="name" class="form-label">Họ và tên</label> --}}
+          <input type="name" class="form-control" id="name" aria-describedby="nameHelp" name="name" autocomplete="off"
+            required placeholder="Họ và tên">
+        </div>
+        <div class="mb-3">
+          {{!-- <label for="email" class="form-label">Email</label> --}}
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
+            autocomplete="off" required placeholder="Email">
+        </div>
+        <div class="mb-3">
+          {{!-- <label for="password" class="form-label">Mật khẩu</label> --}}
+          <input type="password" class="form-control" id="password" name="password" autocomplete="off" required
+            placeholder="Mật khẩu">
+        </div>
+        <div class="mb-3">
+          {{!-- <label for="password" class="form-label">Xác nhận mật khẩu</label> --}}
+          {{!-- <input type="password" class="form-control" id="password" name="password" autocomplete="off" required
+            placeholder="Xác nhận mật khẩu"> --}}
+        </div>
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+        {{!-- <a href="/users/sign-in" class="btn">Đăng nhập</a> --}}
+        <div>
+          <p class="text-account">Đã có tài khoản</p>
+          <a href="/users/sign-in">Đăng nhập</a>
+        </div>
+      </form>
+
     </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" autocomplete="off">
-    </div>
-    <div class="mb-3">
-      <label for="password" class="form-label">Mật khẩu</label>
-      <input type="password" class="form-control" id="password" name="password" autocomplete="off">
-    </div>
-    <button type="submit" class="btn btn-primary">Đăng ký</button>
-    {{!-- <a href="/users/sign-in" class="btn">Đăng nhập</a> --}}
-  </form>
+  </div>
 </div>

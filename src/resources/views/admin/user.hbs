@@ -1,7 +1,7 @@
 <form name="container-form" class="container mt-4" method="post" action="/courses/handle-form">
     <div>
-        <h2 class="text-center">Tài liệu của tôi</h2>
-        <a class="btn btn-success" href="/docs/create" title="Thêm mới"><i class="fas fa-plus"></i></a>
+        <h2 class="text-center">Quản lý tài khoản</h2>
+        <a class="btn btn-success" href="/users/sign-up" title="Thêm mới"><i class="fas fa-plus"></i></a>
         <div class="mt-4 d-flex align-items-center">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
@@ -21,16 +21,12 @@
         <thead>
             <tr>
                 <th scope="col" colspan="2"></th>
-                <th scope="col">
-                    Tên tài liệu
-                    <a href=""><i class="fas fa-chevron-up"></i></a>
-                </th>
-                <th scope="col">Mô tả</th>
-                <th scope="col" colspan="2">Tác giả</th>
+                <th scope="col">Họ và tên</th>
+                <th scope="col">Email </th>
             </tr>
         </thead>
         <tbody>
-            {{#each docs}}
+            {{#each users}}
             <tr>
                 <td>
                     <div class="form-check">
@@ -40,8 +36,7 @@
                 </td>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
-                <td>{{this.description}}</td>
-                <td>{{this.author}}</td>
+                <td>{{this.email}}</td>
                 <td>
                     <a href="/docs/{{this._id}}/edit" class="btn btn-success" title="Cập nhập"><i
                             class="far fa-edit"></i></a>
@@ -52,8 +47,8 @@
             {{else}}
             <tr>
                 <td colspan="5" class="text-center">
-                    Bạn chưa đăng khoá nào
-                    <a href="/docs/create" class="btn btn-success">Tải tài liệu </a>
+                    Bạn chưa tài khoản nào
+                    <a href="/users/sign-up" class="btn btn-success">Đăng ký tài khoản </a>
                 </td>
             </tr>
             {{/each}}

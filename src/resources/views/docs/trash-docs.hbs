@@ -1,4 +1,4 @@
-<form class="mt-4" name="container-form" class="mt-4" method="post" action="/courses/trash-all">
+<form class="mt-4" name="container-form" class="container mt-4" method="post" action="/courses/trash-all">
     <div>
         <h2 class="text-center">Khoá học đã xoá</h2>
         <div class="mt-4 d-flex align-items-center">
@@ -8,7 +8,8 @@
                     Chọn tất cả
                 </label>
             </div>
-            <select class="form-select form-select-sm checkbox-option" aria-label="Default select example" name="action" required>
+            <select class="form-select form-select-sm checkbox-option" aria-label="Default select example" name="action"
+                required>
                 <option value="">--Hành động--</option>
                 <option value="deleteForce">Xoá vĩnh viễn</option>
                 <option value="restoreAll">Khôi phục</option>
@@ -118,14 +119,14 @@
         renderCheckAllSubmitBtn();
     })
     //Chọn phương thức thực hiện
-    
+
     //Enable nút thực hiện
     function renderCheckAllSubmitBtn() {
         var CheckedCount = $('input[name="courseIds[]"]:checked').length;
         if (CheckedCount > 0) {
-            btnCheckAllSubmit.attr('disabled',false);
-        }else{
-            btnCheckAllSubmit.attr('disabled',true);
+            btnCheckAllSubmit.attr('disabled', false);
+        } else {
+            btnCheckAllSubmit.attr('disabled', true);
         }
     }
 </script>
