@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const meController = require('../app/controllers/MeController');
+const AuthMiddleware = require('../app/middlewares/AuthMiddleware');
 router.get('/stored/courses', meController.storedCourses);
-router.get('/stored/news', meController.writeNews);
+router.get('/stored/news',meController.writeNews);
 router.get('/stored/docs', meController.storedDocs);
-router.get('/stored/mess', meController.writeMess);
-router.get('/trash/courses', meController.trashCourses);
-router.get('/trash/docs', meController.trashDocs);
-router.get('/sign-in', meController.signIn);
-router.get('/sign-up', meController.signUp);
+router.get('/stored/mess',meController.writeMess);
+router.get('/trash/courses',meController.trashCourses);
+router.get('/trash/docs',meController.trashDocs);
 module.exports = router;

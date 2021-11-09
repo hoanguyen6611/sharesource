@@ -2,20 +2,14 @@
     <div class="row">
         <div class="col-lg-9">
             <h2 class="title mb-4">{{course.name}}</h2>
-            <img src="{{course.image}}" class="card-img-top img-size" alt="{{course.name}}">
+            <img src="{{course.linkImg}}" class="card-img-top img-size" alt="{{course.name}}">
             <p class="descripton mt-4">{{course.description}}</p>
         </div>
         <div class="col-lg-3">
             <h5 class="text-center mb-4">Giới thiệu</h5>
-            <iframe width="374" height="210" src="https://www.youtube.com/embed/{{course.linkImg}}"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
             <div class="mt-4">
                 <ul class="information">
                     <li><i class="fas fa-level-up-alt mr-2"></i>{{course.level}}</li>
-                    <li><i class="fas fa-sort-numeric-up-alt mr-2"></i>Tổng số ... bài học</li>
-                    <li><i class="fas fa-clock mr-2"></i>Thời lượng</li>
                     <li><i class="fas fa-sticky-note mr-2"></i>Học mọi lúc mọi nơi</li>
                 </ul>
             </div>

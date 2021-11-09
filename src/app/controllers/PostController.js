@@ -9,14 +9,23 @@ class PostController {
     }
     //[GET]/posts/blog
     blog(req, res) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         res.render('posts/blog');
     }
     //[GET]/posts/question
     question(req, res) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         res.render('posts/question');
     }
     //[GET]/posts/sharecode
     shareCode(req, res) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         res.render('posts/sharecode');
     }
 }

@@ -6,10 +6,16 @@ const {mongooseToObject} = require('../../util/mongoose');
 class SiteController {
     //[GET]/admin
     index(req, res) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         res.render('admin/admin');
     }
     //[GET]/admin/courses
     courses(req, res,next) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         Course.find({})
             .then(courses => {
                 res.render('admin/courses', { 
@@ -20,6 +26,9 @@ class SiteController {
     }
     //[GET]/admin/docs
     docs(req, res,next) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         Doc.find({})
             .then(docs => {
                 res.render('admin/docs', { 
@@ -30,6 +39,9 @@ class SiteController {
     }
     //[GET]/admin/user
     users(req, res,next) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         User.find({})
             .then(users => {
                 res.render('admin/user', { 

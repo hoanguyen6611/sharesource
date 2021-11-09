@@ -56,3 +56,21 @@
 .account-login a {
   color: #212529;
 }
+#paging ul {
+  list-style-type: none;
+  display: flex;
+}
+#paging .paginationjs-page,
+#paging .paginationjs-ellipsis,
+#paging .paginationjs-prev,
+#paging .paginationjs-next {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #212529;
+  text-align: center;
+}
+#paging .active {
+  background-color: #9215ff;
+  color: #fff;
+}

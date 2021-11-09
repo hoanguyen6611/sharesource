@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const courseController = require('../app/controllers/CourseController');
+const AuthMiddleware = require('../app/middlewares/AuthMiddleware');
 router.get('/create', courseController.create);
 router.post('/store', courseController.store);
 router.get('/:id/edit', courseController.edit);
@@ -9,8 +10,7 @@ router.post('/handle-form',courseController.handleForm);
 router.put('/:id', courseController.update);
 router.patch('/:id/restore', courseController.restore);
 router.delete('/:id', courseController.destroy);
-router.delete('/:id/force', courseController.forceDestroy);
-router.get('/', courseController.showAll);
+router.delete('/:id/force',courseController.forceDestroy);
+router.get('/',courseController.showAll);
 router.get('/:slug', courseController.showItems);
-router.get('/:slug/learn', courseController.learn);
 module.exports = router;

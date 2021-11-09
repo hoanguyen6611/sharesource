@@ -4,6 +4,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 const passport = require('passport');
 const localPassport = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
+const md5 = require('md5');
 class UserController {
     //[GET]/users/sign-in
     signIn(req, res, next) {
@@ -15,19 +16,19 @@ class UserController {
     }
     //[GET]/users/changepass
     changePasswords(req, res, next) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
         res.render('user/changepassword');
     }
     // Đăng ký
     //[POST]/users/sign-up
     register(req, res, next) {
-        // const salt = process.env.saltRounds;
-        var salt = bcrypt.genSaltSync(10);
-        //const password = bcrypt.hashSync(req.body.password, salt);
+        const password = md5(req.body.password);
         const entity = {
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password,
-            admin: 0
+            password
         };
         User.findOne({ email: req.body.email })
             .then(user => {
@@ -42,44 +43,25 @@ class UserController {
                 }
             })
             .then(user => {
-                //res.redirect('/');
-                res.render('user/profile',{
-                    user: mongooseToObject(user)
-                });
+                res.redirect('/users/sign-in');
             })
             .catch(next);
 
     }
-    // Đăng nhập
-    //[POST]/users/sign-in
+    //[POST]/users/sign-in -- đăng nhập
     confirmSignIn(req, res, next) {
-        // const user = await User.findOne({ email: req.body.email }).exec();
-        // if (user.email === req.body.email) {
-        //     console.log(1);
-        // } else {
-        //     console.log(2);
-        // }
         const email = req.body.email;
-        const password = req.body.password;
-        // const passwordNH = req.body.password;
-        // const rs = bcrypt.compareSync(passwordNH, password);
-        // console.log(rs);
+        const password = md5(req.body.password);
         User.findOne({
             email: email,
             password: password,
         })
             .then(user => {
                 if (user) {
-                    // delete user.password;
-                    // req.session.isAuthenticated = true;
-                    // req.session.authUser = user;
-                    // console.log(req.session.authUser);
-                    res.render('user/profile',{
-                        user: mongooseToObject(user)
-                    });
-                    //res.render('courses/show', { course: mongooseToObject(course) });
+                    req.session.isAuthenticated = true;
+                    req.session.authUser = user;
+                    res.render('user/profile');
                 } else {
-                    //res.status(300).json('Đăng nhập thất bại');
                     return res.render('user/sign-in', {
                         error: 'Thông tin đăng nhập không chính xác vui lòng kiểm tra lại'
                     })
@@ -87,14 +69,41 @@ class UserController {
             })
             .catch(next);
     };
-    //[GET]/me/profile
+    //[GET]/users/profile
     profile(req, res, next) {
-        // kiểm tra quyền (thêm)
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
+        console.log(req.session.authUser);
+        res.render('user/profile');
+    }
+    //[POST]/users/logout
+    logout(req, res, next) {
+        if (!req.session.isAuthenticated){
+            return res.redirect('/users/sign-in');
+        }
+        req.session.isAuthenticated =false;
+        req.session.authUser =null;
+        res.redirect(req.headers.referer);
+    }
+    //[POST]/users/changepass
+    changePass(req, res, next) {
         // if (!req.session.isAuthenticated){
         //     return res.redirect('/users/sign-in');
         // }
-        // console.log(req.session.authUser)
-        res.render('user/profile');
+        // var passwordOld = md5(req.body.passwordOld);
+        // var passwordNew = md5(req.body.passwordNew);
+        // User.find({email: req.session.authUser.email})
+        //     .then(user =>{
+        //         if(user.password === passwordOld){
+        //             user.password = passwordNew;
+        //             res.redirect('/users/profile');
+        //         }
+        //         return res.redirect('/users/changepass', {
+        //             error: 'Mật khẩu cũ không chính xác vui lòng kiểm tra lại'
+        //         })
+                
+        //     })
     }
 }
 //Public ra ngoài

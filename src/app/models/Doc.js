@@ -10,6 +10,7 @@ const Doc = new Schema({
   source: { type: String},
   file: { type: String, required: true },
   slug: { type: String,slug: 'name',unique:true },
+  userId: { type: String},
 }, {
   timestamps: true, //mặc định thêm thời gian tạo và thời gian update
 });

@@ -26,8 +26,35 @@
         </div>
       </div>
     </form>
-    {{#if user}}
-    <div></div>
+    {{#if lcIsAuthenticated}}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <img src="https://avatar-redirect.appspot.com/google/109023826614717592641?size=400" alt=""
+              class="user-avatar">
+            {{lcAuthUser.name}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {{#if lcAuthUser.admin}}
+               <a class="dropdown-item" href="/admin">Trang quản lý</a>
+            {{/if}}
+            <a class="dropdown-item" href="/users/profile">Thông tin tài khoản</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/me/stored/courses">Khóa học của tôi</a>
+            <a class="dropdown-item" href="/me/stored/docs">Tài liệu của tôi</a>
+            <a class="dropdown-item" href="/me/stored/news">Bài viết của tôi</a>
+            <a class="dropdown-item" href="/me/stored/mess">Tin nhắn</a>
+            <div class="dropdown-divider"></div>
+            <form method="post" action="/users/logout">
+              {{!-- <a class="dropdown-item">Đăng xuất</a> --}}
+              <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-sign-out-alt"></i></button>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
     {{else}}
     <div class="ml-4">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -40,37 +67,6 @@
       </ul>
     </div>
     {{/if}}
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <img src="https://avatar-redirect.appspot.com/google/109023826614717592641?size=400" alt=""
-              class="user-avatar">
-            {{#if user}}
-            {{user.name}}
-            {{else}}
-            Xin chào bạn
-            {{/if}}
-          </a>
-          {{#if user.name}}
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/users/profile">Thông tin tài khoản</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/me/stored/courses">Khóa học của tôi</a>
-            <a class="dropdown-item" href="/me/stored/docs">Tài liệu của tôi</a>
-            <a class="dropdown-item" href="/me/stored/news">Bài viết của tôi</a>
-            <a class="dropdown-item" href="/me/stored/mess">Tin nhắn</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Đăng xuất</a>
-          </div>
-          {{else}}
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/users/sign-in">Đăng nhập</a>
-          </div>
-          {{/if}}
-        </li>
-      </ul>
-    </div>
+
   </div>
 </nav>
