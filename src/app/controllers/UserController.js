@@ -31,7 +31,7 @@ class UserController {
             name: req.body.name,
             email: req.body.email,
             password,
-            image:'https://res.cloudinary.com/dxd5emviu/image/upload/v1636511224/user-3331257_960_720_pnavel.png'
+            image: 'https://res.cloudinary.com/dxd5emviu/image/upload/v1636511224/user-3331257_960_720_pnavel.png'
         };
         User.findOne({ email: req.body.email })
             .then(user => {
@@ -54,10 +54,8 @@ class UserController {
     //[POST]/users/sign-in -- đăng nhập
     confirmSignIn(req, res, next) {
         const email = req.body.email;
-        // const password = md5(req.body.password);
         User.findOne({
-            email: email,
-            // password: password,
+            email: email
         })
             .then(user => {
                 if (user) {
@@ -83,7 +81,7 @@ class UserController {
         if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
-        console.log(req.session.authUser.email);
+        // console.log(req.session.authUser._id);
         res.render('user/profile');
     }
     //[POST]/users/logout
@@ -97,22 +95,41 @@ class UserController {
     }
     //[POST]/users/changepass
     changePass(req, res, next) {
-        // if (!req.session.isAuthenticated){
-        //     return res.redirect('/users/sign-in');
-        // }
-        // var passwordOld = md5(req.body.passwordOld);
-        // var passwordNew = md5(req.body.passwordNew);
-        // User.find({email: req.session.authUser.email})
-        //     .then(user =>{
-        //         if(user.password === passwordOld){
-        //             user.password = passwordNew;
-        //             res.redirect('/users/profile');
-        //         }
-        //         return res.redirect('/users/changepass', {
-        //             error: 'Mật khẩu cũ không chính xác vui lòng kiểm tra lại'
-        //         })
+        const passOld = req.body.passwordOld;
+        const passNew = req.body.passwordNew;
+        const email = req.session.authUser.email;
+        if (!req.session.isAuthenticated) {
+            return res.redirect('/users/sign-in');
+        }
+        User.findOne({
+            email: email
+        })
+            .then(user => {
+                if (user) {
+                    var kq = bcrypt.compareSync(passOld, user.password);
+                    if (!kq) {
+                        return res.render('user/changepassword', {
+                            error: 'Mật khẩu cũ không chính xác'
+                        })
+                    }
+                    var salt = bcrypt.genSaltSync(10);
+                    var password = bcrypt.hashSync(passNew, salt);
+                    User.updateOne({ _id: req.session.authUser._id }, { password: password })
+                        // .then(() => res.send('Đổi mật khẩu thành công'))
+                        .then(function () {
+                            req.session.isAuthenticated = false;
+                            req.session.authUser = null;
+                            res.render('passsuccess');
+                        })
+                        .catch(next);
+                } else {
+                    return res.render('user/sign-in', {
+                        error: 'Thông tin đăng nhập không chính xác vui lòng kiểm tra lại'
+                    })
+                }
+            })
+            .catch(next);
 
-        //     })
     }
 }
 //Public ra ngoài

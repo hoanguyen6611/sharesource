@@ -156,6 +156,16 @@ class CourseController {
                 res.json('Không có hành vi');
         }
     }
+    showFour(req, res,next){
+        Course.find()
+            .limit(4)
+            .then(courses => {
+                res.render('home',{
+                    courses: mutipleMongooseToObject(courses)
+                })
+            })
+            .catch(next);
+    }
 }
 //Public ra ngoài
 module.exports = new CourseController();

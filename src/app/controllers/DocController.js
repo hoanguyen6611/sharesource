@@ -79,6 +79,16 @@ class DocController {
             .then(() => res.redirect('/me/stored/docs'))
             .catch(next);
     }
+    showFour(req, res,next){
+        Doc.find()
+            .limit(4)
+            .then(docs => {
+                res.render('home',{
+                    docs: mutipleMongooseToObject(docs)
+                })
+            })
+            .catch(next);
+    }
     
 }
 //Public ra ngoài
