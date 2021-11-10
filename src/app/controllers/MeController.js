@@ -7,7 +7,7 @@ class MeController {
         if (!req.session.isAuthenticated){
             return res.redirect('/users/sign-in');
         }
-        let courseQuery = Course.find({});
+        let courseQuery = Course.find({userId: req.session.authUser.email});
         Promise.all([courseQuery, Course.countDocumentsDeleted()])
             .then(([courses, deletedCount]) =>
                 res.render('me/stored-courses', {
@@ -55,7 +55,7 @@ class MeController {
             return res.redirect('/users/sign-in');
         }
         // res.json(res.local._sort);
-        let docQuery = Doc.find({});
+        let docQuery = Doc.find({userId:req.session.authUser.email});
         Promise.all([docQuery, Doc.countDocumentsDeleted()])
             .then(([docs, deletedCount]) =>
                 res.render('me/stored-docs', {

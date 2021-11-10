@@ -1,6 +1,10 @@
 <form name="container-form" class="container mt-4" method="post" action="/courses/handle-form">
+    <h1 class="text-center">Trang quản lý </h1>
+    <a href="/admin/courses">Khoá học</a>
+    <a href="/admin/docs">Tài liệu </a>
+    <a href="/admin/users">Tài khoản</a>
     <div>
-        <h2 class="text-center">Khoá học của tôi</h2>
+        <h4 class="text-center">Khoá học của tôi</h4>
         <a class="btn btn-success" href="/courses/create" title="Thêm mới"><i class="fas fa-plus"></i></a>
         <div class="mt-4 d-flex align-items-center">
             <div class="form-check">
@@ -26,7 +30,6 @@
                     <a href=""><i class="fas fa-chevron-up"></i></a>
                 </th>
                 <th scope="col">Mô tả</th>
-                <th scope="col">Trình độ</th>
                 <th scope="col" colspan="2">Thời gian tạo</th>
             </tr>
         </thead>
@@ -42,7 +45,6 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.description}}</td>
-                <td>{{this.level}}</td>
                 <td>{{this.createdAt}}</td>
                 <td>
                     <a href="/courses/{{this._id}}/edit" class="btn btn-success" title="Cập nhập"><i

@@ -7,7 +7,6 @@ const Course = new Schema({
   description: { type: String, required: true },
   slug: { type: String,slug: 'name',unique:true },
   linkImg: { type: String, required: true },
-  level: { type: String },
   playlist: { type: String },
   userId: { type: String}
 }, {

@@ -1,4 +1,5 @@
 const Course = require('../models/Course');
+const Doc = require('../models/Doc');
 const {mutipleMongooseToObject} = require('../../util/mongoose');
 class SiteController {
     //[GET]/home
@@ -14,8 +15,22 @@ class SiteController {
 
     }
     //[GET]/search
-    search(req, res) {
-        res.render('search');
+    search(req, res,next) {
+        var key = req.query.q;
+        let courseQuery = Course.find({name: { $regex: key }});
+        let docsQuery = Doc.find({name: { $regex: key }});
+        Promise.all([courseQuery, docsQuery])
+            .then(([courses, docs]) =>
+                res.render('search', {
+                    courses: mutipleMongooseToObject(courses),
+                    docs: mutipleMongooseToObject(docs),
+                })
+            )
+            .catch(next);
+    }
+    //[GET]/search
+    introduce(req, res,next) {
+        res.render('introduce');
     }
 }
 //Public ra ngoài

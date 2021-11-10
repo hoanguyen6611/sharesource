@@ -16,7 +16,7 @@ class UserController {
     }
     //[GET]/users/changepass
     changePasswords(req, res, next) {
-        if (!req.session.isAuthenticated){
+        if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
         res.render('user/changepassword');
@@ -24,11 +24,14 @@ class UserController {
     // Đăng ký
     //[POST]/users/sign-up
     register(req, res, next) {
-        const password = md5(req.body.password);
+        // const password = md5(req.body.password);
+        var salt = bcrypt.genSaltSync(10);
+        var password = bcrypt.hashSync(req.body.password, salt);
         const entity = {
             name: req.body.name,
             email: req.body.email,
-            password
+            password,
+            image:'https://res.cloudinary.com/dxd5emviu/image/upload/v1636511224/user-3331257_960_720_pnavel.png'
         };
         User.findOne({ email: req.body.email })
             .then(user => {
@@ -51,13 +54,19 @@ class UserController {
     //[POST]/users/sign-in -- đăng nhập
     confirmSignIn(req, res, next) {
         const email = req.body.email;
-        const password = md5(req.body.password);
+        // const password = md5(req.body.password);
         User.findOne({
             email: email,
-            password: password,
+            // password: password,
         })
             .then(user => {
                 if (user) {
+                    var kq = bcrypt.compareSync(req.body.password, user.password);
+                    if (!kq) {
+                        return res.render('user/sign-in', {
+                            error: 'Thông tin đăng nhập không chính xác vui lòng kiểm tra lại'
+                        })
+                    }
                     req.session.isAuthenticated = true;
                     req.session.authUser = user;
                     res.render('user/profile');
@@ -71,19 +80,19 @@ class UserController {
     };
     //[GET]/users/profile
     profile(req, res, next) {
-        if (!req.session.isAuthenticated){
+        if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
-        console.log(req.session.authUser);
+        console.log(req.session.authUser.email);
         res.render('user/profile');
     }
     //[POST]/users/logout
     logout(req, res, next) {
-        if (!req.session.isAuthenticated){
+        if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
-        req.session.isAuthenticated =false;
-        req.session.authUser =null;
+        req.session.isAuthenticated = false;
+        req.session.authUser = null;
         res.redirect(req.headers.referer);
     }
     //[POST]/users/changepass
@@ -102,7 +111,7 @@ class UserController {
         //         return res.redirect('/users/changepass', {
         //             error: 'Mật khẩu cũ không chính xác vui lòng kiểm tra lại'
         //         })
-                
+
         //     })
     }
 }

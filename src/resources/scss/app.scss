@@ -74,3 +74,16 @@
   background-color: #9215ff;
   color: #fff;
 }
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+.footer-left {
+  display: flex;
+}
+.color-text {
+  color: #212529;
+}

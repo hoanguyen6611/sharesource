@@ -19,12 +19,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // app.use(morgan('combined'));
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { 
-    //   secure: true 
-    maxAge: 600000
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        // secure: true,
+        maxAge: 600000
     }
 }))
 // dùng với phương thức post để lấy ra những cái tương tự parameter
@@ -37,8 +37,8 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(express.json());
 // require('./app/middlewares/LocalMiddleware')(app);
-app.use( function(req, res, next) {
-    if (req.session.isAuthenticated===null) {
+app.use(async function (req, res, next) {
+    if (req.session.isAuthenticated === null) {
         req.session.isAuthenticated = false;
     }
     res.locals.lcIsAuthenticated = req.session.isAuthenticated;

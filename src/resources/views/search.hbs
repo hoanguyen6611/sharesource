@@ -1,9 +1,35 @@
-<div class="mt-4">
-    <form method="get" action="">
-  <div class="mb-3">
-    <label for="search-input" class="form-label">Từ khoá</label>
-    <input type="text" name="q" class="form-control" id="search-input" placeholder="Nhập từ khoá ...">
-  </div>
-  <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-</form>
+<div class="container mt-4">
+    <div class="row">
+        {{#each courses}}
+        <div class="col-sm-6 col-lg-4 min-height">
+            <div class="card card-course-item">
+                <a href="/courses/{{this.slug}}">
+                    <img src="{{this.linkImg}}" class="card-img-top" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                    <a href="/courses/{{this.slug}}">
+                        <h5 class="card-title size text-center">{{this.name}}</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="row">
+        {{#each docs}}
+        <div class="col-sm-6 col-lg-4">
+            <div class="card card-course-item">
+                <a href="/docs/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top img-card" alt="{{this.name}}"
+                        style="min-height:550px !important">
+                </a>
+                <div class="card-body">
+                    <a href="/docs/{{this.slug}}">
+                        <h5 class="card-title size text-center">{{this.name}}</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>
