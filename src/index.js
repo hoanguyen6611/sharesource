@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const handlebars = require('express-handlebars');
 const app = express();
-const port = process.env.PORT||3000;
+const port = process.env.PORT||'3000';
 const route = require('./routes');
 const db = require('./config/db');
 const methodOverride = require('method-override');
@@ -57,6 +57,6 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 // route init
 route(app);
 
-app.listen(port, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
+app.listen(port, () =>
+    console.log(`App listening at http://localhost:${port}`),
+);
