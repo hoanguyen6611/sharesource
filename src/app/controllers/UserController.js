@@ -24,7 +24,6 @@ class UserController {
     // Đăng ký
     //[POST]/users/sign-up
     register(req, res, next) {
-        // const password = md5(req.body.password);
         var salt = bcrypt.genSaltSync(10);
         var password = bcrypt.hashSync(req.body.password, salt);
         const entity = {
@@ -58,6 +57,7 @@ class UserController {
             email: email
         })
             .then(user => {
+                console.log(user);
                 if (user) {
                     var kq = bcrypt.compareSync(req.body.password, user.password);
                     if (!kq) {
