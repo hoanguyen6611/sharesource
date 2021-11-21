@@ -1,0 +1,89 @@
+.card-course-item {
+  margin-top: 16px; }
+
+.checkbox-option {
+  width: 140px;
+  margin: 0 16px; }
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 4px; }
+
+.information li {
+  list-style-type: none; }
+
+.min-height {
+  min-height: 350px; }
+
+.size {
+  min-height: 50px; }
+
+.main {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+  margin-right: 100px; }
+
+.img-doc {
+  height: 450px; }
+
+.img-course {
+  height: 250px; }
+
+.img-slider {
+  height: 480px;
+  width: 100%; }
+
+.form-signin {
+  display: flex; }
+
+.form-signin-item {
+  margin: auto;
+  border-bottom: 1px solid #ccc;
+  background-color: #ccc;
+  padding: 100px;
+  border-radius: 25px; }
+
+.main-slider {
+  background: url("https://cdn.pixabay.com/photo/2018/01/30/22/50/forest-3119826_960_720.jpg") top center/cover no-repeat;
+  padding-top: 50px;
+  padding-bottom: 45px; }
+
+.text-account {
+  display: inline-block; }
+
+.account-login a {
+  color: #212529; }
+
+#paging ul {
+  list-style-type: none;
+  display: flex; }
+
+#paging .paginationjs-page,
+#paging .paginationjs-ellipsis,
+#paging .paginationjs-prev,
+#paging .paginationjs-next {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid #212529;
+  text-align: center; }
+
+#paging .active {
+  background-color: #9215ff;
+  color: #fff; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; }
+
+.footer-left {
+  display: flex; }
+
+.color-text {
+  color: #212529; }
