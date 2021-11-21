@@ -57,7 +57,6 @@ class UserController {
             email: email
         })
             .then(user => {
-                console.log(user);
                 if (user) {
                     var kq = bcrypt.compareSync(req.body.password, user.password);
                     if (!kq) {
@@ -67,7 +66,7 @@ class UserController {
                     }
                     req.session.isAuthenticated = true;
                     req.session.authUser = user;
-                    res.render('user/profile');
+                    res.render('home');
                 } else {
                     return res.render('user/sign-in', {
                         error: 'Thông tin đăng nhập không chính xác vui lòng kiểm tra lại'
