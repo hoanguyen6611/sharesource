@@ -6,6 +6,7 @@ router.post('/sign-in', userController.confirmSignIn);
 router.get('/sign-up', userController.signUp);
 router.post('/sign-up',userController.register);
 router.get('/profile',userController.profile);
+router.put('/profile',userController.updateProfile);
 router.get('/changepass',userController.changePasswords);
 router.post('/changepass',userController.changePass);
 router.post('/logout',userController.logout);

@@ -80,8 +80,17 @@ class UserController {
         if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
-        // console.log(req.session.authUser._id);
+        console.log(req.session.authUser._id);
         res.render('user/profile');
+    }
+    //[PUT]/users/profile
+    updateProfile(req, res, next) {
+        if (!req.session.isAuthenticated) {
+            return res.redirect('/users/sign-in');
+        }
+        User.updateOne({ _id: req.session.authUser._id }, req.body)
+            .then(() => res.redirect('/users/profile'))
+            .catch(next);
     }
     //[POST]/users/logout
     logout(req, res, next) {
