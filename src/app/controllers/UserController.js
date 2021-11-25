@@ -4,7 +4,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 const passport = require('passport');
 const localPassport = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
-const md5 = require('md5');
+const validator = require('validator');
 class UserController {
     //[GET]/users/sign-in
     signIn(req, res, next) {
@@ -24,8 +24,14 @@ class UserController {
     // Đăng ký
     //[POST]/users/sign-up
     register(req, res, next) {
-        var salt = bcrypt.genSaltSync(10);
-        var password = bcrypt.hashSync(req.body.password, salt);
+        const checked = validator.equals(req.body.password, req.body.repassword);
+        if (!checked) {
+            res.render('user/sign-up', {
+                error: 'Mật khẩu xác nhận không đúng'
+            })
+        }
+        const salt = bcrypt.genSaltSync(10);
+        const password = bcrypt.hashSync(req.body.password, salt);
         const entity = {
             name: req.body.name,
             email: req.body.email,
@@ -80,7 +86,6 @@ class UserController {
         if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
-        console.log(req.session.authUser._id);
         res.render('user/profile');
     }
     //[PUT]/users/profile
@@ -89,7 +94,10 @@ class UserController {
             return res.redirect('/users/sign-in');
         }
         User.updateOne({ _id: req.session.authUser._id }, req.body)
-            .then(() => res.redirect('/users/profile'))
+            .then(user => {
+                //req.session.authUser = user;
+                res.render('home');
+            })
             .catch(next);
     }
     //[POST]/users/logout
@@ -105,7 +113,9 @@ class UserController {
     changePass(req, res, next) {
         const passOld = req.body.passwordOld;
         const passNew = req.body.passwordNew;
+        const repassNew = req.body.repasswordNew;
         const email = req.session.authUser.email;
+        const checked = validator.equals(passNew, repassNew);
         if (!req.session.isAuthenticated) {
             return res.redirect('/users/sign-in');
         }
@@ -118,6 +128,11 @@ class UserController {
                     if (!kq) {
                         return res.render('user/changepassword', {
                             error: 'Mật khẩu cũ không chính xác'
+                        })
+                    }
+                    if (!checked) {
+                        return res.render('user/changepassword', {
+                            error: 'Mật khẩu mới xác thực không chính xác'
                         })
                     }
                     var salt = bcrypt.genSaltSync(10);

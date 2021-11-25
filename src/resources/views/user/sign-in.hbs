@@ -1,31 +1,33 @@
-<div class="container-fluid main-slider">
-  <h2 class="text-center">Đăng nhập</h2>
-  {{#if error}}
-  <div class=" alert alert-warning alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    {{error}}
-  </div>
-  {{/if}}
-  <div class="form-signin">
-    <divn class="form-signin-item">
-      <form class="mt-4" method="post" action="">
-        <div class="mb-3">
-          {{!-- <label for="email" class="form-label">Email</label> --}}
-          <input type="email" class="form-control" id="email" name="email" required placeholder="Email">
-        </div>
-        <div class="mb-3">
-          {{!-- <label for="password" class="form-label">Mật khẩu</label> --}}
-          <input type="password" class="form-control" id="password" name="password"  required placeholder="Mật khẩu">
-        </div>
-        <div>
-          <button type="submit" class="btn btn-primary">Đăng Nhập</button>
-        </div>
-        <div>
-          <a href="/users/sign-up" class="btn">Tạo tài khoản mới</a>
-        </div>
-      </form>
-    </divn>
+<div class="main-slider">
+  <div class="container-fluid">
+    <h2 class="text-center">Đăng nhập</h2>
+    {{#if error}}
+    <div class=" alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      {{error}}
+    </div>
+    {{/if}}
+    <div class="form-signin">
+      <divn class="form-signin-item">
+        <form class="mt-4" method="post" action="">
+          <div class="mb-3">
+            {{!-- <label for="email" class="form-label">Email</label> --}}
+            <input type="email" class="form-control" id="email" name="email" required placeholder="Email">
+          </div>
+          <div class="mb-3">
+            {{!-- <label for="password" class="form-label">Mật khẩu</label> --}}
+            <input type="password" class="form-control" id="password" name="password" required placeholder="Mật khẩu">
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+          </div>
+          <div>
+            <a href="/users/sign-up" class="btn">Tạo tài khoản mới</a>
+          </div>
+        </form>
+      </divn>
+    </div>
   </div>
 </div>

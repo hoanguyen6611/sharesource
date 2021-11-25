@@ -17,6 +17,7 @@ class SiteController {
     //[GET]/search
     search(req, res,next) {
         var key = req.query.q;
+        //console.log(key.toLowerCase().indexOf(key.toLowerCase()) !== -1);
         let courseQuery = Course.find({name: { $regex: key }});
         let docsQuery = Doc.find({name: { $regex: key }});
         Promise.all([courseQuery, docsQuery])

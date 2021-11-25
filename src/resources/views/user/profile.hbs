@@ -1,6 +1,7 @@
 <div class="container">
   <h2 class="text-center">Thông tin tài khoản</h2>
   <form class="mt-4" method="post" action="/users/profile?_method=PUT">
+  <img src="{{lcAuthUser.image}}" alt="" style="width: 20%;height: 20%;">
     <div class="mb-3">
       <label for="name" class="form-label">Họ và tên</label>
       <input type="name" class="form-control" id="name" aria-describedby="nameHelp" name="name" autocomplete="off" value="{{lcAuthUser.name}}">

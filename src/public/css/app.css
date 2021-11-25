@@ -48,6 +48,7 @@
 
 .main-slider {
   background: url("https://cdn.pixabay.com/photo/2018/01/30/22/50/forest-3119826_960_720.jpg") top center/cover no-repeat;
+  height: 100%;
   padding-top: 50px;
   padding-bottom: 45px; }
 
