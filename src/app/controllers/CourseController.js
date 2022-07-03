@@ -3,7 +3,6 @@ const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { mongooseToObject } = require('../../util/mongoose');
 const PAGE_SIZE = 9;
 class CourseController {
-
     //[GET]/course
   showAll(req, res, next) {
     Course.find({})

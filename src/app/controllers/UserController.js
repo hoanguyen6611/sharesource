@@ -95,8 +95,9 @@ class UserController {
         }
         User.updateOne({ _id: req.session.authUser._id }, req.body)
             .then(user => {
-                //req.session.authUser = user;
-                res.render('home');
+                req.session.isAuthenticated = false;
+                req.session.authUser = null;
+                res.redirect(req.headers.referer);
             })
             .catch(next);
     }
