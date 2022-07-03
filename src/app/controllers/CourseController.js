@@ -5,55 +5,35 @@ const PAGE_SIZE = 9;
 class CourseController {
 
     //[GET]/course
-    showAll(req, res, next) {
-        var page = req.query.page;
-        page = parseInt(page);
-        if (page) {
-            //get of page
-            if(page<1){
-                page=1;
-            }
-            var skiper = (page-1)*PAGE_SIZE;
-            Course.find({})
-                .skip(skiper)
-                .limit(PAGE_SIZE)
-                .then(courses => {
-                    Course.countDocuments({})
-                        .then((total)=>{
-                            // console.log(total);
-                            var totalPage = Math.ceil(total/PAGE_SIZE);
-                            const data = courses;
-                            //console.log(totalPage);
-                            //console.log(data);
-                            res.render('courses/courses', {
-                                courses: mutipleMongooseToObject(courses),
-                                totalPage: totalPage,
-                                total: total,
-                                data:data
-                            });
-                        });
-                    
-                })
-                .catch(next);
-        } else {
-            //get all courses
-            Course.find({})
-                .then(courses => {
-                    res.render('courses/courses', {
-                        courses: mutipleMongooseToObject(courses)
-                    });
-                })
-                .catch(next);
-        }
-    }
-    //[GET]/course/:slug
-    showItems(req, res, next) {
-        Course.findOne({ slug: req.params.slug })
-            .then(course => {
-                res.render('courses/show', { course: mongooseToObject(course) });
-            })
-            .catch(next);
-    }
+  showAll(req, res, next) {
+    Course.find({})
+      .then((courses) => {
+        res.json({
+          data: mutipleMongooseToObject(courses),
+          result: "ok",
+          message: "Successfully",
+        });
+      })
+      .catch((next) => {
+        res.json({
+          data: {},
+          result: "failed",
+          message: "Failed to find",
+        });
+      });
+  }
+  //[GET]/course/:slug
+  showItems(req, res, next) {
+    Course.findOne({ slug: req.params.slug })
+      .then((course) => {
+        res.json({
+            data: mongooseToObject(course),
+            result: "ok",
+            message: "Successfully",
+          });
+      })
+      .catch(next);
+  }
     //[GET]/course/create
     create(req, res, next) {
         if (!req.session.isAuthenticated){
